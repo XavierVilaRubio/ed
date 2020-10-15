@@ -1,0 +1,49 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[catalan]{babel}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{tocloft}
+\usepackage{listingsutf8}
+
+\begin{document}
+\pagenumbering{gobble}
+\begin{titlepage}
+
+\raisebox{-0.2em}[0pt][0pt]{%
+  \makebox[\textwidth][l]{\hbox{\hspace{-3.45em}\includegraphics[width=12em]{assets/logos/logo-campus.png}}}
+}
+
+\raisebox{1.9em}[0pt][0pt]{%
+  \makebox[\textwidth][r]{\includegraphics[width=9em]{assets/logos/logo-udl.png}}
+}
+
+    \centering
+    {\Large
+    Universitat de Lleida\par
+    Grau en Tècniques d'Interacció Digital i de Computació\par
+    Estructura de Dades\par
+}
+    \vfill
+    {\Huge\bfseries Pràctica 3\par}\vspace{3ex}
+    {\Large\bfseries \textit{El tokenizer}\par}
+\vspace{6ex}
+{\Large
+Cristian Oprea i Xavier Vila
+\par}
+\vfill
+\parbox{.5\textwidth}{\centering 05 de novembre de 2020}
+\end{titlepage}
+
+\pagenumbering{arabic}
+\section{L'estrategia}
+Per a resoldre aquesta pràctica vam partir de la següent premisa: "Si obrim un parentesis, no podem tencar una clau fins que no tanquem el parentesis, i al revés".
+
+Amb la premisa clara vam utilitzar un \textit{Iterator} per a anar recorrent l'array de \textit{Symbols} i, com podem obrir tants parentesis i claus com volguem, sempre que ens trobem un \textit{OpenParentesis} o bé un \textit{OpenLlave} l'afegirem a la pila.
+Quan ens trobem un \textit{CloseParentesis} haurem de mirar si l'últim objecte afegit a la pila (és a dir, el "top") és un \textit{OpenParentesis}, ja que només podem tancar un parentesis si és l'últim que hem obert.
+Si és així, fem un \textit{stack.pop();} i ens obvlidem d'aquell parentesis.
+En cas de que no, fem un \textit{return false;} ja que si un parentesis tanca una clau l'expressió no seria correcte.
+
+Finalment si no hi ha hagut cap incongruencia, fem un \textit{return stack.isEmpty();} per assegurar-nos que la pila està buida, ja que d'una altra manera l'expressió no seria correcte.
+
+\end{document}

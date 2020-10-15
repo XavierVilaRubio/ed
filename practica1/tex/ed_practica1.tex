@@ -1,0 +1,55 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[catalan]{babel}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{tocloft}
+\usepackage{eurosym}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\begin{document}
+\pagenumbering{gobble}
+\begin{titlepage}
+
+\raisebox{-0.2em}[0pt][0pt]{%
+  \makebox[\textwidth][l]{\hbox{\hspace{-3.45em}\includegraphics[width=12em]{assets/logos/logo-campus.png}}}
+}
+
+\raisebox{1.9em}[0pt][0pt]{%
+  \makebox[\textwidth][r]{\includegraphics[width=9em]{assets/logos/logo-udl.png}}
+}
+
+    \centering
+    {\Large
+    Universitat de Lleida\par
+    Grau en Tècniques d'Interacció Digital i de Computació\par
+    Estructura de Dades\par
+}
+    \vfill
+    {\Huge\bfseries Pràctica 1\par}\vspace{3ex}
+    {\Large\bfseries \textit{The Maximum Contiguous Subsequence Sum Problem} (MCS)\par}
+\vspace{6ex}
+{\Large
+Cristian Oprea i Xavier Vila
+\par}
+\vfill
+\parbox{.5\textwidth}{\centering 01 d'octubre de 2020}
+\end{titlepage}
+
+\pagenumbering{arabic}
+\section{Algorisme d'ordre quadrat O(N²)}
+Per arribar a aquesta solució vam eliminar el bucle \textit{for} que controlava la variable \textit{k}, la qual era totalment prescindible ja que no aportava res nou al codi, a part d'augmentar el seu cost.
+
+\section{Algorisme d'ordre lineal O(N)}
+Però per molt que haguéssim eliminat un bucle \textit{for} el codi seguia sent terriblement ineficient degut a l'algorisme emprat, un \textit{brute force algorithm}.
+Al principi no ens vam adonar d'això, així que vam seguir treballant fins aconseguir substituir el primer bucle \textit{for} per un parell d' \textit{if}s (veure \textit{maxSubsequenceSum\_lineal\_1} a \textit{practica1.java})
+
+Després de fer una miqueta de recerca vam acabar concloent que l'algorisme de \textit{Kadane} seria molt més eficient, ja que no caldria buscar totes les possibles arrays, només anar buscant la subarray més gran que acabi a l'índex X.
+Aquesta implementació (\textit{maxSubsequenceSum\_lineal\_2} a \textit{practica1.java}) s'aproxima bastant a la final, només que en aquest cas no funcionava amb els nombres negatius.
+
+Però la gran pregunta segueix sent: "Com funciona l'algorisme de \textit{Kadane}?" doncs és molt senzill, va buscant la subarray més gran que acabi a cada índex (l'array fins a l'índex anterior + aquell índex) i la descarta si és negativa, ja que acabaria disminuint la suma final.
+Per fer que funcionés amb nombres negatius vam eliminar aquella comprovació i senzillament ens vam assegurar de que només suméssim en cas de que fes augmentar el valor màxim, si no resetejavem thisSum.
+Finalment vam aconseguir la funció \textit{maxSubsequenceSum\_lineal} en la qual vam aplicar tot el comentat i vam aconseguir la màxima eficàcia al mínim cost.
+
+
+\end{document}

@@ -1,0 +1,84 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[catalan]{babel}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{tocloft}
+\usepackage{listingsutf8}
+
+\lstset{
+    tabsize=2,
+    language=Java, 
+    breakatwhitespace=true,
+    breaklines=true,
+    numbers=left,
+    frame=single,
+    showspaces=false,
+    showstringspaces=false,
+    basicstyle=\small,
+}
+
+\begin{document}
+\pagenumbering{gobble}
+\begin{titlepage}
+
+\raisebox{-0.2em}[0pt][0pt]{%
+  \makebox[\textwidth][l]{\hbox{\hspace{-3.45em}\includegraphics[width=12em]{assets/logos/logo-campus.png}}}
+}
+
+\raisebox{1.9em}[0pt][0pt]{%
+  \makebox[\textwidth][r]{\includegraphics[width=9em]{assets/logos/logo-udl.png}}
+}
+
+    \centering
+    {\Large
+    Universitat de Lleida\par
+    Grau en Tècniques d'Interacció Digital i de Computació\par
+    Estructura de Dades\par
+}
+    \vfill
+    {\Huge\bfseries Pràctica 2\par}\vspace{3ex}
+    {\Large\bfseries \textit{Programación Orientada a Objetos (POO) para las Estructuras de Datos}\par}
+\vspace{6ex}
+{\Large
+Cristian Oprea i Xavier Vila
+\par}
+\vfill
+\parbox{.5\textwidth}{\centering 22 d'octubre de 2020}
+\end{titlepage}
+
+\pagenumbering{arabic}
+\section*{Ejercicio 1 - Aliases}
+El nom en "x" es Marc\\
+El nom en "y" es Marc\\
+El nom en "z" es Joan\\
+Això passa perquè l'objecte "x" apunta cap al objecte "y" degut al "x = y", per tant quan modifiquem l'atribut nom d'x realment estem modificant l'atribut d'on apunta "x", que és "y".
+Cara a "z", com que no l'hem inicialitzat quan fem el "z = x" no estem creant cap apuntador, per tant el valor nom de "z" es manté igual.
+\section*{Ejercicio 2 - Encapsulamiento}
+a) Només pot accedir el bloc 2 degut a que \texttt{nameDay} no és una variable, és un atribut dels objectes de la classe "Ej2", per tant necessitem un objecte "Ej2" per poder accedir a aquest atribut.\\\\
+b) No, no es pot imprimir perque l'atribut "x" és privat.\\\\
+c) Per a solucionar això hem implementat un getter, per d'aquesta manera poder obtenir el valor de l'atribut "x" sense haver de fer la classe pública.
+\begin{lstlisting}
+package unPaquet;
+public class A {
+    private int x;
+    public A() {
+        x=1;
+    }
+    public int getX() {
+        return x;
+    }
+}
+package unPaquet;
+public class C {
+    A a;
+    public C(){
+        a=new A();
+    }
+    public void metodeC(){
+        System.out.println("El valor de a es:" + a.getX());
+    }
+}
+\end{lstlisting}
+
+\end{document}

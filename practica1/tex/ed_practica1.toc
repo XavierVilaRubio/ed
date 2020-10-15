@@ -1,0 +1,2 @@
+\babel@toc {spanish}{}
+\contentsline {section}{\numberline {1}Algoritmo orden cúbico O(N³)}{1}{section.1}%
