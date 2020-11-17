@@ -5,8 +5,8 @@ public class Professor extends Persona{
         return despatx;
     }
 
-    public void setDespatx(String despatx) {
-        this.despatx = despatx;
+    public void setDespatx(String _despatx) {
+        this.despatx = _despatx;
     }
 
     public Professor(String _nom, String _dni, String _despatx){

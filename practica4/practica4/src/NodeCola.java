@@ -2,6 +2,9 @@ public class NodeCola<T> {
     public T element;
     public NodeCola<T> next;
 
+    /*
+    public NodeCola(){}
+
     @Override
     public String toString() {
         return "NodeCola{" +
@@ -9,10 +12,6 @@ public class NodeCola<T> {
                 ", next=" + next.element +
                 '}';
     }
+    */
 
-    public NodeCola(){}
-    public NodeCola(T element, NodeCola<T> next) {
-        this.element = element;
-        this.next = next;
-    }
 }

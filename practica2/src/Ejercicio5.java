@@ -1,5 +1,5 @@
 import java.util.*;
-public class Exercici5 {
+public class Ejercicio5 {
     public static void main(String[] args) {
         Persona_ person1 = new Persona_("Sergio", "99999999X");
         Persona_ person2 = new Persona_("Josep", "88888888P");

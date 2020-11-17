@@ -137,19 +137,33 @@ public class Tokenizer {
     public static boolean comprovarExpressio(ArrayList<Symbol> arr_simbols)
     {
         Stack<Symbol> stack = new Stack<>();
-        Iterator<Symbol> iterator = arr_simbols.iterator();
-        while(iterator.hasNext()){
-            Symbol actual = iterator.next();
-            if(actual instanceof OpenLlave || actual instanceof OpenParentesis){
-                stack.push(actual);
-            }else if(actual instanceof ClosingLlave && !stack.isEmpty() && stack.peek() instanceof OpenLlave){
+        for(int i = 0; i < arr_simbols.size(); i++) {
+            Symbol s = arr_simbols.get(i);
+            if(s instanceof OpenLlave || s instanceof OpenParentesis){
+                stack.push(s);
+            }else if(s instanceof ClosingLlave && !stack.isEmpty() && stack.peek() instanceof OpenLlave){
                 stack.pop();
-            }else if(actual instanceof ClosingParentesis && !stack.isEmpty() && stack.peek() instanceof OpenParentesis){
+            }else if(s instanceof ClosingParentesis && !stack.isEmpty() && stack.peek() instanceof OpenParentesis){
                 stack.pop();
             }else{
                 return false;
             }
         }
+        /*
+        Iterator<Symbol> iterator = arr_simbols.iterator();
+        while(iterator.hasNext()){
+            Symbol s = iterator.next();
+            if(s instanceof OpenLlave || s instanceof OpenParentesis){
+                stack.push(s);
+            }else if(s instanceof ClosingLlave && !stack.isEmpty() && stack.peek() instanceof OpenLlave){
+                stack.pop();
+            }else if(s instanceof ClosingParentesis && !stack.isEmpty() && stack.peek() instanceof OpenParentesis){
+                stack.pop();
+            }else{
+                return false;
+            }
+        }
+        */
         return stack.isEmpty();
     }
 }

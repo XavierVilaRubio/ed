@@ -1,8 +1,8 @@
 public class Coche implements Comparable<Coche>{
     public String matricula;
 
-    public Coche(String _matricula){
-        matricula = _matricula;
+    public Coche(String new_matricula){
+        matricula = new_matricula;
     }
 
     @Override

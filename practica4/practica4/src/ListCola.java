@@ -1,18 +1,19 @@
 public class ListCola<T> implements ColaInterfaz<T>{
         //atributos
-        private NodeCola<T> cabeza = new NodeCola<>();
-        private NodeCola<T> cola = new NodeCola<>();
+        private NodeCola<T> cabeza;
+        private NodeCola<T> cola;
 
         //constructora crea una cola
         public ListCola(){
-                cabeza.next = cola;
-                cola.next = cabeza;
+                cabeza = new NodeCola<>();
+                cola = new NodeCola<>();
         }
 
         // true si la cola está vacía.
         @Override
         public boolean isEmpty() {
                 if(cabeza.element == null){
+                        //System.out.println("cabeza null");
                         return true;
                 }else {
                         return false;
@@ -50,7 +51,9 @@ public class ListCola<T> implements ColaInterfaz<T>{
 
         public static void main(String[] args) {
                 ListCola<Integer> cua = new ListCola();
+                cua.isEmpty();
 
+                /*
                 cua.inserir(1);
                 cua.inserir(2);
                 cua.inserir(3);
@@ -61,5 +64,6 @@ public class ListCola<T> implements ColaInterfaz<T>{
                 System.out.println(cua.cabeza.next.next);
                 System.out.println(cua.cabeza.next.next.next);
                 System.out.println(cua.cabeza.next.next.next.next);
+                */
         }
 }

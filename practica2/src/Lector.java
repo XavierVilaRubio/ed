@@ -5,8 +5,8 @@ public class Lector extends Persona{
         return grup;
     }
 
-    public void setGrup(String grup) {
-        this.grup = grup;
+    public void setGrup(String _grup) {
+        this.grup = _grup;
     }
 
     public Lector(String _nom, String _dni, String _grup){
