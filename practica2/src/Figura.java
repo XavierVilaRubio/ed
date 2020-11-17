@@ -3,27 +3,21 @@ public abstract class Figura {
     public Double area;
 
     abstract double CalculaArea();
-    abstract String GetColor();
-    abstract void SetColor(String c);
+    String GetColor(){
+        return color;
+    }
+    void SetColor(String c){
+        color = c;
+    }
 }
 
 class Cuadrado extends Figura {
+    public double costado;
+
     @Override
     double CalculaArea() {
         return costado*costado;
     }
-
-    @Override
-    String GetColor() {
-        return color;
-    }
-
-    @Override
-    void SetColor(String c) {
-        color = c;
-    }
-
-    public double costado;
 
     public double getCostado(){
         return costado;
@@ -35,16 +29,6 @@ class Cuadrado extends Figura {
 
 class Circumferencia extends Figura{
     public double radio;
-
-    @Override
-    String GetColor() {
-        return color;
-    }
-
-    @Override
-    void SetColor(String c) {
-        color = c;
-    }
 
     @Override
     double CalculaArea() {
