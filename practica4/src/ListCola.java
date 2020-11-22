@@ -5,8 +5,8 @@ public class ListCola<T> implements ColaInterfaz<T>{
 
         //constructora crea una cola
         public ListCola(){
-                cabeza = new NodeCola<>();
-                cola = new NodeCola<>();
+                cabeza = new NodeCola<T>();
+                cola = new NodeCola<T>();
         }
 
         // true si la cola está vacía.
@@ -23,47 +23,26 @@ public class ListCola<T> implements ColaInterfaz<T>{
         //Añade un nodo a la cola
         @Override
         public void inserir(T x) {
-                if (isEmpty()) {
-                        cabeza.element = x;
-                }else {
-                        if(cola.element == null){
-                                cola.element = x;
-                        }else {
-                                NodeCola<T> tmp = cabeza;
-                                for (tmp = cabeza; tmp.next != cola; tmp = tmp.next) {
-                                }
-                                NodeCola<T> penultim = new NodeCola();
-                                penultim.element = cola.element;
-                                penultim.next = cola;
-                                tmp.next = penultim;
-                                cola.element = x;
-                        }
+                NodeCola<T> tmp = new NodeCola<T>(x, null);
+                if(isEmpty()){
+                        cabeza = cola = tmp;
                 }
+                cola.next = tmp;
+                cola = tmp;
         }
 
         //devuelve (la cabeza, o la cola?) de la lista, y elimina el nodo
         @Override
         public T treure() {
+                if(isEmpty()){
+                        return  null;
+                }
                 T element = cabeza.element;
+                cabeza.element = null;
                 cabeza = cabeza.next;
+                if(isEmpty()){
+                        cola = null;
+                }
                 return element;
-        }
-
-        public static void main(String[] args) {
-                ListCola<Integer> cua = new ListCola();
-                cua.isEmpty();
-
-                /*
-                cua.inserir(1);
-                cua.inserir(2);
-                cua.inserir(3);
-                cua.inserir(4);
-
-                System.out.println(cua.cabeza);
-                System.out.println(cua.cabeza.next);
-                System.out.println(cua.cabeza.next.next);
-                System.out.println(cua.cabeza.next.next.next);
-                System.out.println(cua.cabeza.next.next.next.next);
-                */
         }
 }
