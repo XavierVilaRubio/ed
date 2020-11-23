@@ -5,15 +5,14 @@ public class ListCola<T> implements ColaInterfaz<T>{
 
         //constructora crea una cola
         public ListCola(){
-                cabeza = new NodeCola<T>();
-                cola = new NodeCola<T>();
+                cabeza = null;
+                cola = null;
         }
 
         // true si la cola está vacía.
         @Override
         public boolean isEmpty() {
-                if(cabeza.element == null){
-                        //System.out.println("cabeza null");
+                if(cabeza == null){
                         return true;
                 }else {
                         return false;
@@ -26,19 +25,19 @@ public class ListCola<T> implements ColaInterfaz<T>{
                 NodeCola<T> tmp = new NodeCola<T>(x, null);
                 if(isEmpty()){
                         cabeza = cola = tmp;
+                }else {
+                        cola.next = tmp;
+                        cola = cola.next;
                 }
-                cola.next = tmp;
-                cola = tmp;
         }
 
         //devuelve (la cabeza, o la cola?) de la lista, y elimina el nodo
         @Override
         public T treure() {
                 if(isEmpty()){
-                        return  null;
+                        return null;
                 }
                 T element = cabeza.element;
-                cabeza.element = null;
                 cabeza = cabeza.next;
                 if(isEmpty()){
                         cola = null;
