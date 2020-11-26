@@ -1,11 +1,11 @@
 public class client {
-    public int tentrada;
-    public int tsalida;
+    public int tarribada;
+    public int tsortida;
 
-    public client(int _tentrada) {
-        tentrada = _tentrada;
+    public client(int tarribada) {
+        this.tarribada = tarribada;
     }
     public int getTempsTotal(){
-        return tsalida-tentrada;
+        return (tsortida - tarribada);
     }
 }
