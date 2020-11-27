@@ -17,20 +17,24 @@ public class Practica4 {
             tempsTotal = 0;
 
             while (!cuaDeClients.isEmpty()) {
-                int tempsTranscorregut = 0;
-                boolean atendido = false;
-                client current = cuaDeClients.treure();
-                while (!atendido){
-                    for(int i = 0; i <= cashier; i++){
-                        if(current.tarribada+tempsTranscorregut >= caixerTime[i]){
-                            current.tsortida = current.tarribada + tempsTranscorregut + 120;
-                            caixerTime[i] = current.tsortida;
-                            tempsTotal += current.getTempsTotal();
-                            atendido = true;
-                            break;
+                //Anem caixer per caixer
+                for(int i = 0; i <= cashier; i++){
+                    //Si encara queden clients
+                    if(!cuaDeClients.isEmpty()) {
+                        //En treiem un
+                        client current = cuaDeClients.treure();
+                        //El processem
+                        if(current.tarribada >= caixerTime[i]){
+                            current.tsortida = current.tarribada + 120;
+                        }else{
+                            current.tsortida = caixerTime[i] + 120;
                         }
-                    }
-                    tempsTranscorregut++;
+                        //Actualitzem els temps
+                        caixerTime[i] = current.tsortida;
+                        tempsTotal += current.getTempsTotal();
+                    //Si la cua està buida fem un break per evitar iteracions innecessaries sobre el bucle for.
+                    }else
+                        break;
                 }
             }
             tempsMitja = tempsTotal / NUM_CLIENTS;
