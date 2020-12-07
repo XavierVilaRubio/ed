@@ -24,6 +24,7 @@ public class MyPriorityQueue<T extends Comparable> {
     public T remove(){
        T minItem = element();
        vector[1] = vector [currentSize--];
+       // Afegit per nosaltres per a fer l'array una mica més neta i que a l'hora d'imprimir-la és mostri correctament.
        vector [currentSize+1] = null;
        percolateDown(1);
        return minItem;
@@ -38,19 +39,21 @@ public class MyPriorityQueue<T extends Comparable> {
                 vector[hole] = vector[min];
                 hole = min;
                 vector[hole] = tmp;
+            }else{
+                break;
             }
         }
     }
 
-    public boolean isFull(){return currentSize == vector.length;}
+    private boolean isFull(){return currentSize == vector.length;}
 
-    public T element(){
+    private T element(){
         if (currentSize == 0)
             System.out.println("The heap is empty");
         return vector[1];
     }
 
-    public void treePrinter(){
+    private void treePrinter(){
         for(int x=0;x<12;x++){System.out.print(" ");}
         System.out.print(this.vector[1]);
 
@@ -79,7 +82,7 @@ public class MyPriorityQueue<T extends Comparable> {
         testEliminacion();
     }
 
-    public static void testInsercion(){
+    private static void testInsercion(){
         MyPriorityQueue cua = new MyPriorityQueue();
         cua.add("13");
         cua.add("21");
@@ -99,7 +102,7 @@ public class MyPriorityQueue<T extends Comparable> {
         cua.treePrinter();
     }
 
-    public static void testEliminacion(){
+    private static void testEliminacion(){
         MyPriorityQueue cua = new MyPriorityQueue();
         cua.add("13");
         cua.add("14");
