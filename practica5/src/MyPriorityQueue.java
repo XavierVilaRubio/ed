@@ -25,22 +25,20 @@ public class MyPriorityQueue<T extends Comparable> {
        T minItem = element();
        vector[1] = vector [currentSize--];
        // Afegit per nosaltres per a fer l'array una mica més neta i que a l'hora d'imprimir-la és mostri correctament.
-       vector [currentSize+1] = null;
        percolateDown(1);
        return minItem;
     }
 
     private void percolateDown(int hole){
-        int min;
-        while(hole*2<=currentSize){
-            min = (vector[hole*2].compareTo(vector[(hole*2)+1])<=0) ? hole*2 : (hole*2)+1;
+        vector[hole] = vector[currentSize+1];
+        vector[currentSize+1]=null;
+        while(hole*2<currentSize){
+            int min = (vector[hole*2].compareTo(vector[(hole*2)+1])<=0) ? hole*2 : (hole*2)+1;
             if(vector[hole].compareTo(vector[min])>0){
                 T tmp = vector[hole];
                 vector[hole] = vector[min];
+                vector[min] = tmp;
                 hole = min;
-                vector[hole] = tmp;
-            }else{
-                break;
             }
         }
     }
@@ -94,7 +92,7 @@ public class MyPriorityQueue<T extends Comparable> {
         cua.add("65");
         cua.add("26");
         cua.add("32");
-        System.out.println("INSERCION:");
+        System.out.println("INSERTION:");
         System.out.println("Before insertion:");
         cua.treePrinter();
         cua.add("14");
