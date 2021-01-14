@@ -7,7 +7,7 @@ public class Dijkstra {
     public static void main (String[] args){
         Graph g = new Graph();
         try{
-            FileReader fin = new FileReader("/Users/sergiosayago/Desktop/input.txt");
+            FileReader fin = new FileReader("input.txt");
             Scanner graphFile = new Scanner(fin);
 
             String line;
@@ -38,8 +38,8 @@ public class Dijkstra {
             System.out.println("Error");
         }
         System.out.println("File read...applying dijkstra");
-        g.dijkstra(“E”);
-        g.printPath("C");
+        g.dijkstra("E");
+        g.printPath("A");
     }
 
 }

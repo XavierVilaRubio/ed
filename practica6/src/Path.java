@@ -10,6 +10,6 @@ public class Path implements Comparable<Path>{
     @Override
     public int compareTo(Path rhs) {
         double otherCost = rhs.cost;
-        return cost < otherCost ? -1 : cost < otherCost ? 1: 0;
+        return cost < otherCost ? -1 : cost > otherCost ? 1: 0;
     }
 }
